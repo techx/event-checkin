@@ -1,0 +1,16 @@
+#!/bin/bash
+USER_DIR='/afs/athena/user'
+EXCLUDE_DIR1='/afs/athena/user/other/*'
+EXCLUDE_DIR2='/afs/athena/user/*/other/*'
+OUTPUT_FILE='athenas.txt'
+SEARCH_PATTERN='^/afs/athena/user/././[0-9A-Za-z]\{1,8\}$'
+FOUND_STR='Found user'
+find "$USER_DIR" -maxdepth 3 -type d \
+    -not \( -path "$EXCLUDE_DIR1" -prune \) \
+    -not \( -path "$EXCLUDE_DIR2" -prune \) \
+    -print \
+    2>/dev/null \
+    | grep "$SEARCH_PATTERN" \
+    | xargs -l basename \
+    | tee "$OUTPUT_FILE" \
+    | xargs -l echo "$FOUND_STR"
