@@ -1,0 +1,7 @@
+#!/bin/bash
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+GEN='gen_athenas'
+PROC='proc_athenas.py'
+
+"${DIR}/${GEN}"
+"${DIR}/${PROC}"
