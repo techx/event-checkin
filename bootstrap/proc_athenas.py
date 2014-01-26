@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import subprocess, re, json
+import subprocess, os, re, json
 
 INFILE = 'athenas.txt'
 OUTFILE = '../studentinfo.json'
@@ -10,17 +10,20 @@ SEARCHES = {
     'course': r'^ou: (.*)$'
 }
 
+DIR = os.path.dirname(os.path.realpath(__file__))
+ABS_INFILE = os.path.join(DIR, INFILE)
+ABS_OUTFILE = os.path.join(DIR, OUTFILE)
 COMPILED_SEARCHES = {
     query: re.compile(pattern, re.MULTILINE)
         for query, pattern in SEARCHES.items()
 }
 
 def main():
-    with open(INFILE) as fin:
+    with open(ABS_INFILE) as fin:
         users = [i.strip() for i in fin.read().split()]
         info = { user: process_user(user)
             for user in users }
-        with open(OUTFILE, 'w') as fout:
+        with open(ABS_OUTFILE, 'w') as fout:
             jstr = json.dumps(info, sort_keys = True, indent = 4,
                 separators = (',', ': '))
             fout.write('%s\n' % jstr)
