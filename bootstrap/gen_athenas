@@ -4,7 +4,7 @@ USER_DIR='/afs/athena/user'
 EXCLUDE_DIR1='/afs/athena/user/other/*'
 EXCLUDE_DIR2='/afs/athena/user/*/other/*'
 OUTPUT_FILE='athenas.txt'
-SEARCH_PATTERN='^/afs/athena/user/././[0-9A-Za-z]\{1,8\}$'
+SEARCH_PATTERN='^/afs/athena/user/././[0-9a-z]\{3,8\}$'
 FOUND_STR='Found user'
 
 find "${USER_DIR}" -maxdepth 3 -type d \
