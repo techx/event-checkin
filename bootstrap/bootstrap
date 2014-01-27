@@ -1,7 +1,9 @@
 #!/bin/bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 GEN='gen_athenas'
+FORMAT='jsonify_athenas.py'
 PROC='proc_athenas.py'
 
 "${DIR}/${GEN}"
+"${DIR}/${FORMAT}"
 "${DIR}/${PROC}"

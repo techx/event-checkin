@@ -6,4 +6,4 @@ This stuff has to be run on athena to generate the files necessary for the check
 usage
 -----
 
-Run `bootstrap` to generate the `studentinfo.json` file.
+Run `bootstrap` to generate the `studentinfo.json` and `athenas.json` files.
