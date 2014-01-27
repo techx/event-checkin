@@ -51,7 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
   <script src="dymo.latest.js"></script>
   <script src="jquery-2.1.0.min.js"></script>
-  <script src="athenas.js"></script>
   <script src="script.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' />
   <link rel="stylesheet" href="style.css" />

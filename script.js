@@ -24,6 +24,8 @@ var confirm_attendee = function() {
     }, print_func);
 };
 
+var athenas = null;
+
 // Updates HTML with athena substring matches.
 // Takes as input the div of matches to append to.
 var update_matches = function(match) {
@@ -64,6 +66,8 @@ var reset = function() {
     $('form').addClass('fade-out');
 }
 
+var studentinfo = null;
+
 // Brings up confirmation form.
 var submit = function() {
     submitting = true;
@@ -71,13 +75,15 @@ var submit = function() {
     $('#loading').removeClass('hide');
     $('.match').addClass('disabled');
 
-    // Get athena - index.php serves double-duty to ldaps.
-    $.post('', { email: athena }, function(res) {
+    if (athena in studentinfo) {
         $('#loading').addClass('hide');
         $('.match').removeClass('disabled');
         reset();
-        var student = JSON.parse(res);
+        var student = studentinfo[athena];
         console.log(student);
+        student.name = student.name || '{Your name}';
+        student.year = student.year || '{Your year}';
+        student.course = student.course || '{Your course}';
 
         $('#form-name').val(student.name);
         var years = {
@@ -95,8 +101,7 @@ var submit = function() {
         $('#form-course').val(student.course);
         $('form').removeClass('fade-out');
         $('#form-name').focus();
-    })
-    .error(function(res) {
+    } else {
         $('#loading').addClass('hide');
         $('.match').removeClass('disabled');
 
@@ -114,7 +119,7 @@ var submit = function() {
         }, 2000);
 
         submitting = false;
-    });
+    }
 }
 
 // Set up basic textbox with event listeners.
@@ -212,6 +217,24 @@ $(document).ready(function() {
         dataType: "text",
         success: function(xml) {
             setup_printer(xml);
+        }
+    });
+    // Initialize athenas
+    $.ajax({
+        url: "athenas.json",
+        async: false,
+        dataType: "json",
+        success: function(data) {
+            athenas = data;
+        }
+    });
+    // Initialize studentinfo
+    $.ajax({
+        url: "studentinfo.json",
+        async: false,
+        dataType: "json",
+        success: function(data) {
+            studentinfo = data;
         }
     });
 });
