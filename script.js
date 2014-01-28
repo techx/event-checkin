@@ -90,13 +90,14 @@ var submit = function() {
             "1": "FRESHMAN",
             "2": "SOPHOMORE",
             "3": "JUNIOR",
-            "4": "SENIOR"
+            "4": "SENIOR",
+            "G": "GRADUATE"
         };
         $('body').data('email', athena);
         if (student.year in years) {
             $('#form-year').val(years[student.year]);
         } else {
-            $('#form-year').val("year " + student.year);
+            $('#form-year').val(student.year);
         }
         $('#form-course').val(student.course);
         $('form').removeClass('fade-out');
