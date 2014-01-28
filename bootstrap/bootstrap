@@ -4,6 +4,19 @@ GEN='gen_athenas'
 FORMAT='jsonify_athenas.py'
 PROC='proc_athenas.py'
 
+# Attach locker that has ldaps
+BIN_PATH="/mit/consult/bin"
+PATTERN="(^|:)${BIN_PATH}(:|$)"
+if [[ ! -d /mit/consult ]];
+then
+    attach consult
+fi
+if [[ ! "${PATH}" =~ "${PATTERN}" ]];
+then
+    export PATH="${BIN_PATH}:${PATH}"
+fi
+
+# Run scripts to process data
 "${DIR}/${GEN}"
 "${DIR}/${FORMAT}"
 "${DIR}/${PROC}"
