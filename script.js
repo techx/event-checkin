@@ -208,7 +208,7 @@ $(document).ready(function() {
     setup_textbox();
     // Fetch label XML template.
     $.ajax({
-        url: "/checkin/nametag.label",
+        url: "nametag.label",
         dataType: "text",
         success: function(xml) {
             setup_printer(xml);
