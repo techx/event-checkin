@@ -1,8 +1,9 @@
 event-checkin
 =============
 
-A quick JS app that lets users type in their athenas, confirm, and submit for
-event checkin.
+A JS app for [TechX][1] that lets users type in their Athena usernames,
+confirm, and submit for printing.
 
-Note: You'll need `athenas.js` and `ldaps` for this to work. I've kept it out
-of the repo for distribution reasons - contact me@joshma.com if you need it.
+You'll need to have the `athenas.json` and `studentinfo.json` files for this to work. You can generate this data by running `bootstrap/bootstrap` on Athena.
+
+[1]: http://techx.mit.edu/
