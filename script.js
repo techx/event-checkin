@@ -207,6 +207,7 @@ var setup_printer = function(xml) {
         label.setObjectText("major_ref", $("#form-course").val());
         label.setObjectText("year_ref", $("#form-year").val());
         label.print(printerName); 
+        Console.log(label);
     };
 }
 

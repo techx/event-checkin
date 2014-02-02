@@ -28,13 +28,13 @@
         <Element>
           <String>Max Kolysh</String>
           <Attributes>
-            <Font Family="Arial" Size="22" Bold="True" Italic="False" Underline="False" Strikeout="False"/>
+            <Font Family="Roboto" Size="7" Bold="True" Italic="False" Underline="False" Strikeout="False"/>
             <ForeColor Alpha="255" Red="0" Green="0" Blue="0"/>
           </Attributes>
         </Element>
       </StyledText>
     </TextObject>
-    <Bounds X="336" Y="391.1811" Width="5337.6" Height="833.3859"/>
+    <Bounds X="336" Y="391.181" Width="5337.6" Height="833.3859"/>
   </ObjectInfo>
   <ObjectInfo>
     <ShapeObject>
@@ -70,7 +70,7 @@
         <Element>
           <String>Electrical Eng &amp; Computer Sci</String>
           <Attributes>
-            <Font Family="Calibri" Size="18" Bold="False" Italic="False" Underline="False" Strikeout="False"/>
+            <Font Family="Roboto" Size="18" Bold="False" Italic="False" Underline="False" Strikeout="False"/>
             <ForeColor Alpha="255" Red="0" Green="0" Blue="0"/>
           </Attributes>
         </Element>
@@ -114,7 +114,7 @@
         <Element>
           <String>Junior</String>
           <Attributes>
-            <Font Family="Calibri" Size="18" Bold="False" Italic="False" Underline="False" Strikeout="False"/>
+            <Font Family="Roboto" Size="18" Bold="False" Italic="False" Underline="False" Strikeout="False"/>
             <ForeColor Alpha="255" Red="0" Green="0" Blue="0"/>
           </Attributes>
         </Element>
