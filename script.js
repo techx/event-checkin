@@ -22,7 +22,7 @@ var confirm_attendee = function() {
     //     email: email,
     //     name: name
     // }, print_func);
-    print_funct();
+    print_func();
 };
 
 var athenas = null;
