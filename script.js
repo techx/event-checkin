@@ -18,10 +18,11 @@ var confirm_attendee = function() {
     var email = $('body').data('email');
     // Use form value if they changed it.
     var name = $('#form-name').val();
-    $.post(ATTENDEE_SAVE_URL, {
-        email: email,
-        name: name
-    }, print_func);
+    // $.post(ATTENDEE_SAVE_URL, {
+    //     email: email,
+    //     name: name
+    // }, print_func);
+    print_funct();
 };
 
 var athenas = null;
