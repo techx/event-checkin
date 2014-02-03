@@ -1,3 +1,8 @@
+@font-face{
+    font-family: 'Roboto';
+    src: url(/Roboto) format('truetype');
+}
+
 body {
     background: url('bg-web.png') #444;
     color: white;
