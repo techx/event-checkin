@@ -203,7 +203,7 @@ form {
     -webkit-transition: opacity 0.2s ease-in;
     transition: opacity 0.2s ease-in;
     opacity: 1;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 input[type=text]:focus {
