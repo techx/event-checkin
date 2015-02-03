@@ -12,7 +12,7 @@ ABS_OUTFILE = os.path.join(DIR, OUTFILE)
 def main():
     with open(ABS_INFILE) as fin:
         users = [i.strip() for i in fin.read().split()]
-        info = { ltr: list(names)
+        info = { ltr: sorted(list(names))
             for ltr, names in itertools.groupby(users, lambda s: s[0])  }
         with open(ABS_OUTFILE, 'w') as fout:
             jstr = json.dumps(info, sort_keys = True, indent = 4,
