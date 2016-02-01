@@ -46,7 +46,10 @@ def create_image(user, raffle=False):
     canvas = ImageDraw.Draw(image)
 
     if raffle:
+        filename = 'xfair-raffle.png'
         draw_centered_text(canvas, OPEN_SANS_REGULAR, "RAFFLE", fill=180)
+    else:
+        filename = 'xfair.png'
 
     draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 20, user.name, max_height=HEIGHT/4)
 
@@ -60,4 +63,4 @@ def create_image(user, raffle=False):
     draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 280, user.graduation, max_width=max_width)
     draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 370, "xFair 2016", max_width=140)
 
-    image.transpose(Image.ROTATE_90).save(join(dirname(__file__), 'labels', 'xfair.png'), "PNG")
+    image.transpose(Image.ROTATE_90).save(join(dirname(__file__), 'labels', filename), "PNG")
