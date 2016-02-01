@@ -25,7 +25,7 @@ def fetch_user(kerberos):
 
 def checkin_user():
     print_xfair_banner()
-    print "Press enter to accept the default value between the []."
+    print "Type nothing (and just press enter) to accept the value between the []."
     print "Press Control-C to start over."
     kerberos = prompt("Enter your kerberos")
     default_name, default_major, default_email = fetch_user(kerberos)

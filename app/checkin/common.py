@@ -5,7 +5,7 @@ def prompt(message, default=None):
     result = ""
     while True:
         if default is not None:
-            prompt = "{:s} [{:s}]: ".format(message, default)
+            prompt = "{:s}: [{:s}] ".format(message, default)
         else:
             prompt = message + ": "
         result = raw_input(prompt).strip()
