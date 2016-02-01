@@ -24,7 +24,7 @@ if __name__ == "__main__":
             print "Printing your name tag and raffle ticket..."
             print_user(user)
             log_user(user)
-            time.sleep(2)
+            time.sleep(5)
         except KeyboardInterrupt:
             if control_c == True:
                 print "Exiting..."
