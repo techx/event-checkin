@@ -5,6 +5,7 @@ import urllib
 from ..model.user import User
 from common import prompt, print_xfair_banner
 
+
 def fetch_user(kerberos):
     try:
         response = requests.get(os.environ.get("MIT_API_BASE") + urllib.quote_plus(kerberos))
@@ -21,6 +22,7 @@ def fetch_user(kerberos):
         print "Sorry, an unexpected error occurred."
         return (None, None, None)
 
+
 def checkin_user():
     print_xfair_banner()
     print "Press enter to accept the default value between the []."
@@ -29,7 +31,7 @@ def checkin_user():
     default_name, default_major, default_email = fetch_user(kerberos)
     user = User()
     user.name = prompt("Enter your name", default=default_name)
-    user.major = prompt("Enter your major", default=default_major)
+    user.major = prompt("Enter your major(s), comma separated", default=default_major)
     user.graduation = prompt("Enter your graduation year, or 'Graduate' for grad students")
     user.email = prompt("Enter your email", default=default_email)
     return user
