@@ -3,11 +3,7 @@ import os
 from os.path import join, dirname
 
 
-def print_windows(user):
-    pass
-
-
-def print_mac(user):
+def print_user(user):
     printer = os.environ.get('PRINTER_NAME')
     label = join(dirname(__file__), 'labels', 'xfair.png')
     image.create_image(user)

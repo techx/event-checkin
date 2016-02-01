@@ -12,11 +12,7 @@ if os.environ.get("CHECKIN_TYPE") == "express":
 else:
     from app.checkin.regular import checkin_user
 
-if os.environ.get("OPERATING_SYSTEM") == "windows":
-    from app.printer import print_windows as print_user
-else:
-    from app.printer import print_mac as print_user
-
+from app.printer import print_user
 from app.logger import log_user
 
 if __name__ == "__main__":

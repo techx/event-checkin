@@ -19,18 +19,6 @@ OPEN_SANS_REGULAR = [
     ImageFont.truetype(join(dirname(__file__), 'fonts', 'OpenSans-Regular.ttf'), 10)
 ]
 
-OPEN_SANS_LIGHT = [
-    ImageFont.truetype(join(dirname(__file__), 'fonts', 'OpenSans-Light.ttf'), 80),
-    ImageFont.truetype(join(dirname(__file__), 'fonts', 'OpenSans-Light.ttf'), 70),
-    ImageFont.truetype(join(dirname(__file__), 'fonts', 'OpenSans-Light.ttf'), 60),
-    ImageFont.truetype(join(dirname(__file__), 'fonts', 'OpenSans-Light.ttf'), 50),
-    ImageFont.truetype(join(dirname(__file__), 'fonts', 'OpenSans-Light.ttf'), 40),
-    ImageFont.truetype(join(dirname(__file__), 'fonts', 'OpenSans-Light.ttf'), 35),
-    ImageFont.truetype(join(dirname(__file__), 'fonts', 'OpenSans-Light.ttf'), 30),
-    ImageFont.truetype(join(dirname(__file__), 'fonts', 'OpenSans-Light.ttf'), 25),
-    ImageFont.truetype(join(dirname(__file__), 'fonts', 'OpenSans-Light.ttf'), 20)
-]
-
 
 def select_font(canvas, font_family, text, max_width=WIDTH, max_height=HEIGHT):
     for potential in font_family:
