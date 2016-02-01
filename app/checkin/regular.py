@@ -8,7 +8,7 @@ from common import prompt, print_xfair_banner
 
 def fetch_user(kerberos):
     try:
-        response = requests.get(os.environ.get("MIT_API_BASE") + urllib.quote_plus(kerberos))
+        response = requests.get(os.environ.get("MIT_API_BASE") + urllib.quote_plus(kerberos), timeout=3)
         if response.status_code == 404:
             print "Sorry, we could not find that kerberos."
             return (None, None, None)
