@@ -3,3 +3,4 @@
 *.pyc
 express-data.json
 app/printer/labels/*.png
+checked-in-emails.log
