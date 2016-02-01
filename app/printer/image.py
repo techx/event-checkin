@@ -36,7 +36,7 @@ def draw_horiz_centered_text(canvas, font_family, y, text, max_width=WIDTH, max_
 
 def draw_centered_text(canvas, font_family, text, max_height=HEIGHT, fill="black"):
     font = select_font(canvas, font_family, text, max_height=max_height)
-    width, height = canvas.multiline_textsize(text, font=font)
+    width, height = canvas.textsize(text, font=font)
     xy = ((WIDTH - width)/2, (HEIGHT - height)/2)
     canvas.multiline_text(xy, text, font=font, fill=fill, align="center", spacing=10)
 
