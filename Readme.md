@@ -1,7 +1,7 @@
-xfair-checkin
+event-checkin
 =============
 
-This is a check-in system written in python to print nametags for people who come to xFair. At xFair, there will be 2 lines to check in - an express line where people need only to scan their ID, and a regular line where people type in their kerberos and it looks up their information from that to print their nametag.
+This is a check-in system written in python to print nametags for people who come to our events. At our events, there will a line where people type in their username and it looks up their information from that to print their nametag.
 
 Operation/Setup
 ---------------
