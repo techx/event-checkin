@@ -3,6 +3,14 @@ event-checkin
 
 This is a check-in system written in python to print nametags for people who come to our events. At our events, there will a line where people type in their username and it looks up their information from that to print their nametag.
 
+Drivers
+-------
+
+Before you do anything, make sure these drivers are installed on your computer:
+
+- Macs: http://download.dymo.com/dymo/Software/Mac/DLS8Setup.8.5.3.dmg
+- Linux: http://www.dymo.com/en-US/dymo-label-sdk-and-cups-drivers-for-linux-dymo-label-sdk-cups-linux-p--1
+
 Operation/Setup
 ---------------
 
