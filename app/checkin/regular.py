@@ -56,12 +56,18 @@ def checkin_user():
         return None
 
     # set up the user model
+    grade_name = {
+        '2019': 'Freshman',
+        '2018': 'Sophomore',
+        '2017': 'Junior',
+        '2016': 'Senior'
+    }
     user = User()
     user._id = user_id
     user.email = email
     user.name = prompt("Enter your name", default=default_name)
     user.school = prompt("Enter your high school", default=default_school)
-    user.grade = prompt("Enter your email", default=default_grade)
+    user.grade = grade_name[prompt("Enter your email", default=default_grade)]
 
     # check in the user
     requests.post(

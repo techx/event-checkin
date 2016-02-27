@@ -21,6 +21,7 @@ OPEN_SANS_REGULAR = [
 
 
 def select_font(canvas, font_family, text, max_width=WIDTH, max_height=HEIGHT):
+    return font_family[-3]
     for potential in font_family:
         w, h = canvas.textsize(text, font=potential)
         if w <= WIDTH and w <= max_width and h <= max_height:
@@ -45,22 +46,10 @@ def create_image(user, raffle=False):
     image = Image.new('L', (WIDTH, HEIGHT), 255)
     canvas = ImageDraw.Draw(image)
 
-    if raffle:
-        filename = 'xfair-raffle.png'
-        draw_centered_text(canvas, OPEN_SANS_REGULAR, "RAFFLE", fill=180)
-    else:
-        filename = 'xfair.png'
+    filename = 'blueprint.png'
 
-    draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 20, user.name, max_height=HEIGHT/4)
-
-    major_text = '\n'.join([major.strip() for major in user.major.split(',') if major.strip() != ""])
-    draw_centered_text(canvas, OPEN_SANS_REGULAR, major_text, max_height=100)
-
-    if user.graduation[0] == "2":
-        max_width = 150
-    else:
-        max_width = 250
-    draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 280, user.graduation, max_width=max_width)
-    draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 370, "xFair 2016", max_width=140)
+    draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 290, user.name, max_width=WIDTH/2, max_height=HEIGHT/4)
+    draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 330, user.school, max_width=WIDTH/2, max_height=HEIGHT/4)
+    draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 370, user.grade, max_width=WIDTH/2, max_height=HEIGHT/4)
 
     image.transpose(Image.ROTATE_90).save(join(dirname(__file__), 'labels', filename), "PNG")

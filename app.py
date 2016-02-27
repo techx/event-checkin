@@ -29,7 +29,7 @@ if __name__ == "__main__":
             print "PLEASE WAIT FOR BOTH YOUR RAFFLE TICKET AND YOUR NAME TAG."
             print "##########################################################"
 
-            #print_user(user)
+            print_user(user)
 
             log_user(user)
             time.sleep(5)
