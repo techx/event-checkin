@@ -67,7 +67,7 @@ def checkin_user():
     user.email = email
     user.name = prompt("Enter your name", default=default_name)
     user.school = prompt("Enter your high school", default=default_school)
-    user.grade = grade_name[prompt("Enter your email", default=default_grade)]
+    user.grade = grade_name[prompt("Enter your grade (2016-19)", default=default_grade)]
 
     # check in the user
     requests.post(
