@@ -48,8 +48,8 @@ def create_image(user, raffle=False):
 
     filename = 'blueprint.png'
 
-    draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 290, user.name, max_width=WIDTH/2, max_height=HEIGHT/4)
-    draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 330, user.school, max_width=WIDTH/2, max_height=HEIGHT/4)
-    draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 370, user.grade, max_width=WIDTH/2, max_height=HEIGHT/4)
+    draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 395, user.name, max_width=WIDTH/2, max_height=HEIGHT/4)
+    draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 430, user.school, max_width=WIDTH/2, max_height=HEIGHT/4)
+    draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 460, user.grade, max_width=WIDTH/2, max_height=HEIGHT/4)
 
     image.transpose(Image.ROTATE_90).save(join(dirname(__file__), 'labels', filename), "PNG")
