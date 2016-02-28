@@ -36,6 +36,9 @@ def fetch_user(email):
         if not 'confirmedDayTwo' in data['status'] or not data['status']['confirmedDayTwo']:
             print("### Not confirmed to hackathon ###")
 
+        if 'checkInTimeDayOne' in data['status']:
+            print("### Attended learnathon ###")
+
         default_name = data['profile']['name']
         default_school = data['profile']['school']
         default_grade = data['profile']['grade']
