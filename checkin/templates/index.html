@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="{{ url_for('static', filename='main.js') }}"></script>
+        <style>
+            .container {
+                width: 50%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            h1 {
+                margin-bottom: 1em;
+            }
+            .kerberos-input {
+                margin-bottom: 2em;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>
+                xFair Checkin<br/>
+                <small class="text-muted">Please type your kerberos below.</small>
+            </h1>
+            <form id='main-form' action='/print' method='POST'>
+                <div class="form-group row kerberos-input">
+                  <label for="kerberos" class="col-sm-2 col-form-label">Kerberos</label>
+                  <div class="col-sm-10">
+                    <input name="kerberos" type="text" class="form-control" id="kerberos" placeholder="Kerberos" autofocus autocomplete='off'>
+                  </div>
+                </div>
+                <div class="result">
+                    <div class="found" style='display: none;'>
+                        <div class="form-group row">
+                          <label for='name' class="col-sm-2 col-form-label">Name</label>
+                          <div class="col-sm-10">
+                            <input name="name" type="text" class="form-control" id="name" placeholder="Name" autocomplete='off'>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for='major' class="col-sm-2 col-form-label">Major(s)</label>
+                          <div class="col-sm-10">
+                             <input name="major" type="text" class="form-control" id="major" placeholder="Major(s)" autocomplete='off'>
+                          </div>
+                        </div>
+                        <p>Press enter to print this badge</p>
+                        <input type="submit" class="btn btn-primary" value="Print!" />
+                    </div>
+                    <div class="default">
+                        <p id='info-container'>Please type your kerberos above.</p>
+                    </div>
+                </div>
+                <p><br><a href="{{ url_for('custom') }}">Kerberos not working? Click here for manual entry.</a></p>
+            </form>
+        </div>
+    </body>
+</html>
