@@ -46,17 +46,19 @@ def draw_centered_text(canvas, font_family, text, max_height, fill="black"):
     canvas.multiline_text(xy, text, font=font, fill=fill, align="center", spacing=10)
 
 
-def create_image(name, major):
+def create_image(name, major, year):
     global_width = app.config['LABEL_WIDTH']
     global_height = app.config['LABEL_HEIGHT']
     image = Image.new('L', (global_width, global_height), 255)
     canvas = ImageDraw.Draw(image)
     filename = 'xfair.png'
 
-    draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 20, name, max_height=global_height/4)
+    draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 40, name, max_height=global_height/4)
 
     draw_centered_text(canvas, OPEN_SANS_REGULAR, major, max_height=100)
 
-    draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 370, "xFair 2017", max_width=140)
+    draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 280, year, max_height=global_height/6) 
+
+    draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 380, "xFair 2018", max_width=140)
 
     image.transpose(Image.ROTATE_90).save(join(dirname(__file__), 'labels', filename), "PNG")

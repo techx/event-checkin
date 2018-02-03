@@ -16,7 +16,7 @@ def custom():
 
 @app.route('/print', methods=['POST'])
 def print_label():
-    print_user(request.form['name'], request.form['major'])
+    print_user(request.form['name'], request.form['major'], request.form['year'])
     with open('log.csv', 'a') as f:
         f.write("{},{}\n".format(time.time(), request.form['kerberos']))
     return redirect(url_for('index'))
@@ -31,6 +31,18 @@ def lookup_user():
         name = name_search.group(2) + ' ' + name_search.group(1)
         year = re.search(r'year: ([^\n+]+)\n', r.text).group(1)
         major = re.search(r'department: ([^\n]+)\n', r.text)
+
+        if year=="1":
+            year = "Freshman"
+        elif year=="2":
+            year = "Sophomore"
+        elif year=="3":
+            year = "Junior"
+        elif year=="4":
+            year = "Senior"
+        elif year=="G":
+            year = "Graduate Student"
+
         if major is None:
             major = "Undeclared"
         else:

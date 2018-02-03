@@ -1,7 +1,7 @@
 from checkin import app
 
 app.config.update(
-    PRINTER_NAME="DYMO_LabelWriter-450",
+    PRINTER_NAME="DYMO_LabelWriter_450",
     LABEL_WIDTH=760,
     LABEL_HEIGHT=410,
     debug=True

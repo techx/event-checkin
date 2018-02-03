@@ -36,6 +36,7 @@ $(document).ready(function() {
 
                 $('#name').val(result.name);
                 $('#major').val(result.major);
+                $('#year').val(result.year);
 
                 $('.found').show();
                 readyToSubmit = true;
