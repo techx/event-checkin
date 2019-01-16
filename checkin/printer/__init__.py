@@ -1,4 +1,4 @@
-import image
+from .image import create_image
 import os
 from os.path import join, dirname
 
@@ -8,5 +8,9 @@ from checkin import app
 def print_user(name, major, year):
     printer = app.config['PRINTER_NAME']
     label = join(dirname(__file__), 'labels', 'xfair.png')
-    image.create_image(name, major, year)
-    os.system('lpr -P "{:s}" {:s}'.format(printer, label))
+    create_image(name, major, year)
+    # print the tag below based on OS
+    if os.name == 'nt':  # windows
+        os.system('mspaint /pt {:s} "{:s}"'.format(label, printer))  # doesn't quite work
+    else:  # mac/linux/other
+        os.system('lpr -P "{:s}" {:s}'.format(printer, label))

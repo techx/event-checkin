@@ -26,7 +26,7 @@ def lookup_user():
     r = requests.get('http://jserrino.scripts.mit.edu/lookup/', params={'kerberos': request.args['kerberos']})
 
     if "There was 1 match to your request." in r.text:
-        print r.text
+        print(r.text)
         name_search = re.search(r'name: ([^,]+), ([^\n]+)\n', r.text)
         name = name_search.group(2) + ' ' + name_search.group(1)
         year = re.search(r'year: ([^\n+]+)\n', r.text).group(1)
