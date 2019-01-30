@@ -3,8 +3,12 @@ import time
 import re
 from flask import render_template, url_for, redirect, request, jsonify
 
+from pymongo import MongoClient;
+
 from checkin import app
 from checkin.printer import print_user
+
+client = MongoClient("mongodb+srv://admin:user@cluster0-zyfzb.mongodb.net/test?retryWrites=true")
 
 @app.route('/', methods=['GET'])
 def index():
@@ -19,6 +23,13 @@ def print_label():
     print_user(request.form['name'], request.form['major'], request.form['year'])
     with open('log.csv', 'a') as f:
         f.write("{},{}\n".format(time.time(), request.form['kerberos']))
+    db = client['xfair_logins_2019']
+    entries = db['entries']
+    new_data = {
+        'time': time.time(),
+        'kerberos': request.form['kerberos']
+    }
+    entries.insert_one(new_data)
     return redirect(url_for('index'))
 
 @app.route('/lookup', methods=['GET'])
