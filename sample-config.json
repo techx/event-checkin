@@ -4,5 +4,6 @@
     "PRINTER_NAME": "DYMO_LabelWriter_450_Turbo",
     "LABEL_WIDTH": 760,
     "LABEL_HEIGHT": 410,
-    "TRANSPOSE": false
+    "TRANSPOSE": false,
+    "IP_ADDRESS": "foo"
 }

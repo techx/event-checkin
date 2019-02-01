@@ -31,13 +31,15 @@ Finally run `python runserver.py` to run the checkin software. Every time someon
 
 To exit the checkin software, press Control-C twice rapidly (or just hold it).
 
-Outdated Windows Instructions:
+Windows Instructions (Not Currently Working):
+
+Please also update your computer's ip address in the config file above (with the name of printer and size of label). This can be found with a google search.
 
 If you get an error involving the lpr command being invalid, take the following steps:
 
 Go to Control Panel/Programs/Turn Windows Features on or off. Then, expand "Print and Document Services" and check "LPD Print Service" and "LPR Port Monitor."
 
-This may help: https://www.itg.ias.edu/content/connect-network-printer-lpr-windows10
+This may be helpful for future fixing: https://www.blackice.com/Help/Internet/BILPDManager/WebHelp/How_to_set_up_LPR_LPD_Printer_on_Windows_10_and_Windows_Server_2016.htm
 
 Labels
 ------
