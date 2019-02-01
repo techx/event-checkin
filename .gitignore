@@ -3,7 +3,7 @@ config.json
 .vscode
 *.pyc
 express-data.json
-app/printer/labels/*.png
+checkin/printer/labels/*.png
 checked-in-emails.log
 log.csv
 venv

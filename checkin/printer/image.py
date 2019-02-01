@@ -61,4 +61,6 @@ def create_image(name, major, year):
 
     draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 380, "xFair 2018", max_width=140)
 
-    image.transpose(Image.ROTATE_90).save(join(dirname(__file__), 'labels', filename), "PNG")
+    if app.config['TRANSPOSE']:
+        image = image.transpose(Image.ROTATE_90)
+    image.save(join(dirname(__file__), 'labels', filename), "PNG")
