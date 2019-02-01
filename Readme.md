@@ -12,22 +12,32 @@ Before you do anything, make sure these drivers are installed on your computer:
 - Linux: http://www.dymo.com/en-US/dymo-label-sdk-and-cups-drivers-for-linux-dymo-label-sdk-cups-linux-p--1
 - Windows: http://download.dymo.com/dymo/Software/Win/DLS8Setup.8.7.3.exe
 
-Also make sure you have Python installed, along with the Flask, requests, and Pillow libraries. You can create a python3 virtual environment, activate it, and then run `pip install -r requirements.txt`.
+Also make sure you have Python 3 installed.
 
 Operation/Setup
 ---------------
 
 Mac/Linux/Windows Instructions:
 
-This printing works on both Mac and Linux. To set up, plug in the printer and find the printer name. It's usually one of the following on the TechX laptops (for other laptops, look through your devices and printers to find the name):
+First, clone this repository to your computer. Then, `cd` into the project folder and create a python3 virtual environment: `python3 -m venv venv`, or `virtualenv venv`. Next, activate the virtual environment: `source venv/bin/activate`, and install the required python libraries: `pip install -r requirements.txt`. Finally, copy the `sample-config.json` file over to `config.json`.
 
-- Macs: `DYMO_LabelWriter_450` or `DYMO_LabelWriter_450_Turbo`
-- Linux: `LabelWriter-450` or `LabelWriter-450-Turbo`
-- Windows: `DYMO LabelWriter 450` or `DYMO LabelWriter 450 Turbo`
+Next, modify `config.json` as necessary. Below are explanations for the fields:
 
-These names have to be correct for the printing to work. Next, copy the `sample-config.json` file over to `config.json` and edit the appropriate values. This file will be loaded with the environment variables on startup. `LABEL_WIDTH` and `LABEL_HEIGHT` are two essentially magic numbers that correspond to the dimensions of the image this program sends to the label printers to print. Fiddle around with it, testing different aspect ratios and values until the resulting prints turn out nicely.
+* `PRINTER_NAME` is the name of the printer, it must be correct for printing to work. To find the `PRINTER_NAME`, plug in the printer and then look through your devices and printers. It's usually one of the following based on your OS:
 
-Finally run `python runserver.py` to run the checkin software. Every time someone is checked in, it will save the current timestamp and the person's email to `log.csv`.
+    - Macs: `DYMO_LabelWriter_450` or `DYMO_LabelWriter_450_Turbo`
+    - Linux: `LabelWriter-450` or `LabelWriter-450-Turbo`
+    - Windows: `DYMO LabelWriter 450` or `DYMO LabelWriter 450 Turbo`
+
+* `LABEL_WIDTH` and `LABEL_HEIGHT` are two essentially magic numbers that correspond to the dimensions of the image this program sends to the label printers to print. Fiddle around with it, testing different aspect ratios and values until the resulting prints turn out nicely.
+
+* `TRANSPOSE` specifies whether the final image will be rotated by 90 degrees. Currently, this doesn't seem to have an effect on the printed label.
+
+* `IP_ADDRESS` is only for Windows users, see below.
+
+* `MONGO_URI` is the URI of the mongo database where checkin data will be stored.
+
+Finally run `python runserver.py` and go to `localhost:5000` to run the checkin software. Every time someone is checked in, it will save the current timestamp and the person's email to `log.csv`. It will also write it to a mongo database specified by `MONGO_URI` in the config file. __Make sure to delete the old `log.csv` file (if applicable) and clear the database before the event begins.__
 
 To exit the checkin software, press Control-C twice rapidly (or just hold it).
 
@@ -50,25 +60,6 @@ For square, badge-like labels, the correct size is probably `LABEL_WIDTH=410 LAB
 To modify the content printed on the labels, edit the `create_image` method of `checkin/printer/image.py`. There are a handful of methods in this file to facilitate image creation, but the most helpful one is probably `draw_horiz_centered_text`. It may take a few tries to find values for the y-offset parameter that work with the labels you're using.
 
 While you're finding values that work, comment out the call to `lpr` in `checkin/printer/__init__.py` to temporarily disable printing so that you can debug the output images without wasting labels. The output images are located in `checkin/printer/labels`.
-
-Directory structure (probably outdated)
----------------------------------------
-
-**app.py**:
-Used to bootstrap the program and contains the Checkin, Print, Log loop.
-
-**app/checkin**:
-Used to check people in and create a `User` object with the appropriately filled in fields. This user object is handed off to the printer to print, and to the logger to log.
-
-**app/logger**:
-Used to log the checked in users to either a file or webservice. Currently, just writes to a file.
-
-**app/model**:
-Used to hold all the models needed for the checkin library. Basically just the *User* model.
-
-**app/printer**:
-Used to deal with rendering nametags and printing them. If you want to change how the nametags look, you can do it here.
-
 
 Bugs
 ----
