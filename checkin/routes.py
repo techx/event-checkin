@@ -8,7 +8,7 @@ from pymongo import MongoClient;
 from checkin import app
 from checkin.printer import print_user
 
-client = MongoClient("mongodb+srv://admin:user@cluster0-zyfzb.mongodb.net/test?retryWrites=true")
+client = MongoClient(app.config['MONGO_URI'])
 
 @app.route('/', methods=['GET'])
 def index():
