@@ -12,7 +12,7 @@ Before you do anything, make sure these drivers are installed on your computer:
 - Linux: http://www.dymo.com/en-US/dymo-label-sdk-and-cups-drivers-for-linux-dymo-label-sdk-cups-linux-p--1
 - Windows: http://download.dymo.com/dymo/Software/Win/DLS8Setup.8.7.3.exe
 
-Also make sure you have Python installed, along with the Flask, requests, and Pillow libraries.
+Also make sure you have Python installed, along with the Flask, requests, and Pillow libraries. You can create a python3 virtual environment, activate it, and then run `pip install -r requirements.txt`.
 
 Operation/Setup
 ---------------
@@ -25,9 +25,9 @@ This printing works on both Mac and Linux. To set up, plug in the printer and fi
 - Linux: `LabelWriter-450` or `LabelWriter-450-Turbo`
 - Windows: `DYMO LabelWriter 450` or `DYMO LabelWriter 450 Turbo`
 
-These names have to be correct for the printing to work. They can be found in `runserver.py`. Next, copy the `.env.config` file over to `.env` and edit the appropriate values. This file will be loaded with the environment variables on startup. `LABEL_WIDTH` and `LABEL_HEIGHT` are two essentially magic numbers that correspond to the dimensions of the image this program sends to the label printers to print. Fiddle around with it, testing different aspect ratios and values until the resulting prints turn out nicely.
+These names have to be correct for the printing to work. Next, copy the `sample-config.json` file over to `config.json` and edit the appropriate values. This file will be loaded with the environment variables on startup. `LABEL_WIDTH` and `LABEL_HEIGHT` are two essentially magic numbers that correspond to the dimensions of the image this program sends to the label printers to print. Fiddle around with it, testing different aspect ratios and values until the resulting prints turn out nicely.
 
-Finally run `python runserver.py` to run the checkin software. Every time someone is checked in, it will save the current timestamp and the person's email to `checked-in-emails.log`.
+Finally run `python runserver.py` to run the checkin software. Every time someone is checked in, it will save the current timestamp and the person's email to `log.csv`.
 
 To exit the checkin software, press Control-C twice rapidly (or just hold it).
 

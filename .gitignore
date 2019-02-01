@@ -1,5 +1,6 @@
-.env
+config.json
 .DS_Store
+.vscode
 *.pyc
 express-data.json
 app/printer/labels/*.png
