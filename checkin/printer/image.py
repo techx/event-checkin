@@ -59,7 +59,7 @@ def create_image(name, major, year):
 
     draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 280, year, max_height=global_height/6) 
 
-    draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 380, "xFair 2018", max_width=140)
+    draw_horiz_centered_text(canvas, OPEN_SANS_REGULAR, 380, "xFair 2019", max_width=140)
 
     if app.config['TRANSPOSE']:
         image = image.transpose(Image.ROTATE_90)
