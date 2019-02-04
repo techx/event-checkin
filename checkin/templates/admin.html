@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <style>
+            .container {
+                width: 50%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            h1 {
+                margin-bottom: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>
+                 xFair Checkin<br/>
+                <small class="text-muted">Checkin Details</small>
+            </h1>
+            <form action="/login_data" method="GET">
+                <div class="form-group row">
+                    <label for="password" class="col-sm-2 col-form-label">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Admin password">
+                </div>
+                <div class="form-group row">
+                    <label for="start_time" class="col-sm-2 col-form-label">Start Time</label>
+                    <div class="col-sm-10">
+                      <input name="start_time" type="datetime-local" class="form-control" id="start_time" placeholder="From time">
+                    </div>
+                </div>
+                <div class="form-group row">
+                  <label for="end_time" class="col-sm-2 col-form-label">End Time</label>
+                  <div class="col-sm-10">
+                    <input name="end_time" type="datetime-local" class="form-control" id="end_time" placeholder="To time">
+                  </div>
+                <div class="form-group row">
+                  <div class="offset-sm-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">Get Logins</button>
+                  </div>
+                </div>
+            </form>
+            {% if access_denied %}
+                <div>
+                    Wrong password!
+                </div>
+            {% elif got_data %}
+                <div>
+                    Users logged in in range:
+                    {{ data }}
+                </div>
+            {% endif %}
+        </div>
+    </body>
+</html>
