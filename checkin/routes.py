@@ -8,6 +8,8 @@ from pymongo import MongoClient;
 from checkin import app
 from checkin.printer import print_user
 
+from datetime import datetime
+
 client = MongoClient(app.config['MONGO_URI'])
 
 @app.route('/', methods=['GET'])
@@ -17,6 +19,33 @@ def index():
 @app.route('/custom', methods=['GET'])
 def custom():
     return render_template('custom.html')
+
+@app.route('/admin', methods=['GET'])
+def admin():
+    return render_template('admin.html')
+
+@app.route('/login_data', methods=['GET'])
+def get_login_data():
+    if (not app.config['DEBUG'] and request.args.get('password') != 'yamatos'):
+        return render_template('admin.html', access_denied=True)
+    epoch = datetime.utcfromtimestamp(0)
+    start_time = request.args.get('start_time')
+    if not start_time:
+        start_time = 0
+    else:
+        start_time = (datetime.strptime(start_time, '%Y-%d-%mT%H:%M') - epoch).total_seconds()
+    end_time = request.args.get('end_time')
+    if not end_time:
+        end_time = (datetime.now() - epoch).total_seconds()
+    else:
+        end_time = (datetime.strptime(end_time, '%Y-%d-%mT%H:%M') - epoch).total_seconds()
+    # convert to UTC (assuming we're in Boston)
+    start_time += 5*60*60
+    end_time += 5*60*60
+    db = client['xfair_logins_2019']
+    entries = db['entries']
+    results = entries.find({'time': {'$lt': end_time, '$gt': start_time}})
+    return render_template('admin.html', got_data=True, data=results.count())
 
 @app.route('/print', methods=['POST'])
 def print_label():
