@@ -33,19 +33,20 @@ def get_login_data():
     if not start_time:
         start_time = 0
     else:
-        start_time = (datetime.strptime(start_time, '%Y-%d-%mT%H:%M') - epoch).total_seconds()
+        start_time = (datetime.strptime(start_time, '%Y-%m-%dT%H:%M') - epoch).total_seconds()
     end_time = request.args.get('end_time')
     if not end_time:
         end_time = (datetime.now() - epoch).total_seconds()
     else:
-        end_time = (datetime.strptime(end_time, '%Y-%d-%mT%H:%M') - epoch).total_seconds()
+        end_time = (datetime.strptime(end_time, '%Y-%m-%dT%H:%M') - epoch).total_seconds()
     # convert to UTC (assuming we're in Boston)
     start_time += 5*60*60
     end_time += 5*60*60
     db = client['xfair_logins_2019']
     entries = db['entries']
     results = entries.find({'time': {'$lt': end_time, '$gt': start_time}})
-    return render_template('admin.html', got_data=True, data=results.count())
+    kerbs = set(result['kerberos'] for result in results)
+    return render_template('admin.html', got_data=True, num_users=len(kerbs), users=kerbs)
 
 @app.route('/print', methods=['POST'])
 def print_label():

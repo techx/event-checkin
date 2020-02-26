@@ -49,8 +49,12 @@
                 </div>
             {% elif got_data %}
                 <div>
-                    Users logged in in range:
-                    {{ data }}
+                    Users logged in in range ({{ num_users }}):
+                    {% for user in users %}
+                    <p>
+                        {{ user }}
+                    </p>
+                    {% endfor %}
                 </div>
             {% endif %}
         </div>
